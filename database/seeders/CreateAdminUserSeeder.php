@@ -18,28 +18,36 @@ class CreateAdminUserSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
-            'name' => 'Fazle',
-            'email' => 'admin@demo.com',
-            'password' => bcrypt('12345678')
-        ]);
+        $user = User::firstOrCreate(
+            ['email' => 'admin@fikri.com'],
+            ['name' => 'Fikri', 'password' => bcrypt('12345678')]
+        );
 
-        $role = Role::create(['name' => 'admin']);
-        $role2 = Role::create(['name' => 'user']);
+        $user2 = User::firstOrCreate(
+            ['email' => 'sergio@fikri.com'],
+            ['name' => 'sergio', 'password' => bcrypt('12345678')]
+        );
+
+        $role = Role::firstOrCreate(['name' => 'admin']);
+        $role2 = Role::firstOrCreate(['name' => 'user']);
+        
         $permissions = [
             'post-list',
             'post-create',
             'post-edit',
             'post-delete'
-            ];
+        ];
+        
         $role2->syncPermissions($permissions);
-        Category::create(['name' => 'Vue.js']);
-        Category::create(['name' => 'Cat 2']);
+        
+        Category::firstOrCreate(['name' => 'Vue.js']);
+        Category::firstOrCreate(['name' => 'Cat 2']);
 
         $permissions = Permission::pluck('id','id')->all();
 
         $role->syncPermissions($permissions);
 
         $user->assignRole([$role->id]);
+        $user2->assignRole([$role->id]);
     }
 }
