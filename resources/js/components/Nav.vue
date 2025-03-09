@@ -6,7 +6,7 @@
                 <span class="navbar-toggler-icon"></span>
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mt-2 mt-lg-0 me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mt-2 mt-lg-0  mb-2 mb-lg-0">
                     <LocaleSwitcher />
                 </ul>
                 <ul class="navbar-nav mt-2 mt-lg-0 ms-auto">

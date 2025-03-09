@@ -22,6 +22,7 @@
     <script>
         window.config = @json($config);
     </script>
+    <style> .rtl { direction: rtl; text-align: right; }</style>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
